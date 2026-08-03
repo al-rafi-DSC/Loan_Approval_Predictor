@@ -1,0 +1,84 @@
+{
+  "model_name": "Loan Approval Predictor",
+  "model_version": "1.0.0",
+  "created_at_utc": "2026-08-03T10:36:16.673795+00:00",
+  "model_class": "HistGradientBoostingClassifier",
+  "selected_configuration": "Untuned HGB",
+  "classification_threshold": 0.34,
+  "training_rows": 491,
+  "holdout_rows": 123,
+  "feature_columns": [
+    "Gender",
+    "Married",
+    "Dependents",
+    "Education",
+    "Self_Employed",
+    "ApplicantIncome",
+    "CoapplicantIncome",
+    "LoanAmount",
+    "Loan_Amount_Term",
+    "Credit_History",
+    "Property_Area"
+  ],
+  "input_schema": {
+    "Gender": "object",
+    "Married": "object",
+    "Dependents": "object",
+    "Education": "object",
+    "Self_Employed": "object",
+    "ApplicantIncome": "int64",
+    "CoapplicantIncome": "float64",
+    "LoanAmount": "float64",
+    "Loan_Amount_Term": "float64",
+    "Credit_History": "float64",
+    "Property_Area": "object"
+  },
+  "target": {
+    "column": "Loan_Status",
+    "negative_class": {
+      "encoded_value": 0,
+      "original_label": "N",
+      "meaning": "Rejected"
+    },
+    "positive_class": {
+      "encoded_value": 1,
+      "original_label": "Y",
+      "meaning": "Approved"
+    }
+  },
+  "holdout_metrics": {
+    "accuracy": 0.8211382113821138,
+    "balanced_accuracy": 0.7687306501547988,
+    "macro_f1": 0.7803571428571429,
+    "roc_auc": 0.7897832817337461,
+    "approval_precision": 0.8461538461538461,
+    "approval_recall": 0.9058823529411765,
+    "rejection_precision": 0.75,
+    "rejection_recall": 0.631578947368421,
+    "brier_score": 0.1646221116881568,
+    "log_loss": 0.6653436049904269
+  },
+  "environment": {
+    "python": "3.11.15",
+    "numpy": "2.4.6",
+    "pandas": "2.3.3",
+    "scikit_learn": "1.9.0",
+    "joblib": "1.5.3",
+    "mlflow": "3.14.0",
+    "lightgbm": "4.7.0",
+    "xgboost": "3.2.0",
+    "optuna": "4.9.0"
+  },
+  "artifact": {
+    "filename": "loan_approval_model.joblib",
+    "sha256": "55829fe0392b66bb8823343561f6c260c919723bd32250efb89a8ac839f3d560"
+  },
+  "limitations": [
+    "The target represents historical approval decisions, not repayment or default.",
+    "The dataset contains only 614 applications.",
+    "Historical labels may contain institutional or demographic bias.",
+    "Group-level fairness estimates are uncertain for small groups.",
+    "Predicted scores are not guaranteed to be calibrated probabilities.",
+    "The model must be used as decision support, not autonomous lending approval."
+  ]
+}
